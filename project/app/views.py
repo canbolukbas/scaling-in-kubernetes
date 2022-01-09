@@ -12,7 +12,7 @@ from app.models import MemoryRequest
 
 
 # Create a metric to track time spent and requests made.
-REQUEST_SUMMARY = Summary('request_processing_seconds', 'Time spent processing request')
+REQUEST_SUMMARY = Summary('http_requests_total', 'Time spent processing request')
 
 
 class HealthView(APIView):
