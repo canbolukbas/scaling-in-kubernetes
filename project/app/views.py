@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from datetime import timedelta
+
+from django.utils import timezone
 
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
+
+from app.models import CPURequest
+from app.models import MemoryRequest
 
 
 class HealthView(APIView):
@@ -17,6 +22,16 @@ class CPUView(APIView):
         for i in range(pow(10, 5)):
             pass
         data = {"msg": "Completed"}
+        cpu_request = CPURequest()
+        cpu_request.save()
+        return Response(data=data, status=HTTP_200_OK)
+
+
+class CPURequestView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        number_of_CPU_requests_in_last_second = CPURequest.objects.filter(timestamp__gte=timezone.now() - timedelta(seconds=1)).count()
+        data = {"msg": "Completed", "count": number_of_CPU_requests_in_last_second}
         return Response(data=data, status=HTTP_200_OK)
 
 
@@ -25,6 +40,16 @@ class MemoryView(APIView):
     def get(self, request, *args, **kwargs):
         memory_intensive_task = ['Cloud'*1024 for _ in range(0, 1024)]
         data = {"msg": "Completed"}
+        memory_request = MemoryRequest()
+        memory_request.save()
+        return Response(data=data, status=HTTP_200_OK)
+
+
+class MemoryRequestView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        number_of_memory_requests_in_last_second = MemoryRequest.objects.filter(timestamp__gte=timezone.now() - timedelta(seconds=1)).count()
+        data = {"msg": "Completed", "count": number_of_memory_requests_in_last_second}
         return Response(data=data, status=HTTP_200_OK)
 
 
