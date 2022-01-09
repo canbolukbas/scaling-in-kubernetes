@@ -5,9 +5,14 @@ from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
+from prometheus_client import Summary
 
 from app.models import CPURequest
 from app.models import MemoryRequest
+
+
+# Create a metric to track time spent and requests made.
+REQUEST_SUMMARY = Summary('request_processing_seconds', 'Time spent processing request')
 
 
 class HealthView(APIView):
@@ -18,6 +23,7 @@ class HealthView(APIView):
 
 class CPUView(APIView):
 
+    @REQUEST_SUMMARY.time()
     def get(self, request, *args, **kwargs):
         for i in range(pow(10, 5)):
             pass
@@ -37,6 +43,7 @@ class CPURequestView(APIView):
 
 class MemoryView(APIView):
 
+    @REQUEST_SUMMARY.time()
     def get(self, request, *args, **kwargs):
         memory_intensive_task = ['Cloud'*1024 for _ in range(0, 1024)]
         data = {"msg": "Completed"}
