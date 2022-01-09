@@ -33,14 +33,6 @@ class CPUView(APIView):
         return Response(data=data, status=HTTP_200_OK)
 
 
-class CPURequestView(APIView):
-
-    def get(self, request, *args, **kwargs):
-        number_of_CPU_requests_in_last_second = CPURequest.objects.filter(timestamp__gte=timezone.now() - timedelta(seconds=1)).count()
-        data = {"msg": "Completed", "count": number_of_CPU_requests_in_last_second}
-        return Response(data=data, status=HTTP_200_OK)
-
-
 class MemoryView(APIView):
 
     @REQUEST_SUMMARY.time()
@@ -49,14 +41,6 @@ class MemoryView(APIView):
         data = {"msg": "Completed"}
         memory_request = MemoryRequest()
         memory_request.save()
-        return Response(data=data, status=HTTP_200_OK)
-
-
-class MemoryRequestView(APIView):
-
-    def get(self, request, *args, **kwargs):
-        number_of_memory_requests_in_last_second = MemoryRequest.objects.filter(timestamp__gte=timezone.now() - timedelta(seconds=1)).count()
-        data = {"msg": "Completed", "count": number_of_memory_requests_in_last_second}
         return Response(data=data, status=HTTP_200_OK)
 
 
