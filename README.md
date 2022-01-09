@@ -12,3 +12,13 @@
 
 ## To-Do's
 - Decide on an IO intensive task and add it into `project/app/views.py`.
+
+## Before You Start
+
+When you create a GKE cluster do the following
+
+```
+kubectl apply -f manifests/metrics-server.yaml
+```
+
+Then you can follow the scripts under `hpa`, `vpa` and `cluster-autoscaler` folders.

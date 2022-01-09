@@ -1,0 +1,18 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: as-custom-metrics
+  namespace: app
+  labels:
+    app: as-service-monitor
+spec:
+  endpoints:
+  - port: http
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - app
+  selector:
+    matchLabels:
+      app: as
