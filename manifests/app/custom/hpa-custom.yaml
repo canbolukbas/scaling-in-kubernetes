@@ -10,8 +10,8 @@ spec:
     kind: Deployment
     name: as
   # autoscale between 1 and 10 replicas
-  minReplicas: 1
-  maxReplicas: 10
+  minReplicas: 3
+  maxReplicas: 50
   metrics:
   # use a "Pods" metric, which takes the average of the
   # given metric across all pods controlled by the autoscaling target

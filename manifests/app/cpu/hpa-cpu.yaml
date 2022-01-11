@@ -4,8 +4,8 @@ metadata:
   creationTimestamp: null
   name: as-cpu
 spec:
-  maxReplicas: 10
-  minReplicas: 1
+  maxReplicas: 50
+  minReplicas: 3
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
