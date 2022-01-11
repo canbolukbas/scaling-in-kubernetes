@@ -22,3 +22,10 @@ kubectl apply -f manifests/metrics-server.yaml
 ```
 
 Then you can follow the scripts under `hpa`, `vpa` and `cluster-autoscaler` folders.
+
+## Testing with JMeter
+1- Enter GUI. Change JMX file's path variables. Close GUI.
+2- Run below on CLI:
+```
+jmeter -n -t [jmx file] -l [results file] -e -o [Path to web report folder]
+```
