@@ -18,7 +18,7 @@
 When you create a GKE cluster do the following
 
 ```
-kubectl apply -f manifests/metrics-server.yaml
+./manifests/metrics-server.sh
 ```
 
 Then you can follow the scripts under `hpa`, `vpa` and `cluster-autoscaler` folders.
