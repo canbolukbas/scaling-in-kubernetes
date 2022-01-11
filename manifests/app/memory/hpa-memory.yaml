@@ -1,8 +1,8 @@
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   creationTimestamp: null
-  name: as-cpu
+  name: as-memory
 spec:
   maxReplicas: 10
   minReplicas: 1
@@ -14,4 +14,6 @@ spec:
   - type: Resource 
     resource:
       name: memory
-      targetAverageUtilization: 120
+      target:
+        type: Utilization
+        averageValue: 120Mi
