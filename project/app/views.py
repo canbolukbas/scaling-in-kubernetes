@@ -21,7 +21,7 @@ class CPUView(APIView):
 
     @REQUEST_SUMMARY.time()
     def get(self, request, *args, **kwargs):
-        for i in range(pow(10, 5)):
+        for i in range(pow(10, 4)):
             pass
         data = {"msg": "Completed"}
         cpu_request = CPURequest()
