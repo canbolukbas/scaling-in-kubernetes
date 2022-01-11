@@ -16,16 +16,16 @@ spec:
     spec:
       containers:
       - name: autoscaling-app
-        image: cakmadam/autoscaling-app:0.1
+        image: cakmadam/autoscaling-app:0.2
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
           name: http
         resources:
           limits:
-            cpu: 500m
+            cpu: 250m
           requests:
-            cpu: 200m
+            cpu: 100m
         livenessProbe:
           httpGet:
             path: /app/health/
@@ -33,6 +33,7 @@ spec:
           initialDelaySeconds: 3
           periodSeconds: 5
           failureThreshold: 5
+          timeoutSeconds: 4
         readinessProbe:
           httpGet:
             path: /app/health/
@@ -40,3 +41,4 @@ spec:
           initialDelaySeconds: 3
           periodSeconds: 5
           failureThreshold: 5
+          timeoutSeconds: 4
