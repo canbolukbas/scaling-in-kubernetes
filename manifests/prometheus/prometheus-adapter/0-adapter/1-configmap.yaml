@@ -9,7 +9,7 @@ metadata:
 data:
   config.yaml: |
     rules:
-    - seriesQuery: 'http_requests_total_count{namespace!="",pod!=""}'
+    - seriesQuery: 'http_requests_total{namespace!="",pod!=""}'
       resources:
         overrides:
           namespace:
@@ -17,6 +17,6 @@ data:
           pod: 
             resource: pod
       name:
-        matches: "^(.*)_total_count"
+        matches: "^(.*)_total"
         as: "${1}_per_second"
       metricsQuery: 'sum(rate(<<.Series>>{<<.LabelMatchers>>}[2m])) by (<<.GroupBy>>)'
