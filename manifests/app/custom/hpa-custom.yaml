@@ -19,4 +19,4 @@ spec:
     pods:
       # use the metric that you used above: pods/http_requests
       metricName: http_requests_per_second
-      targetAverageValue: 200
+      targetAverageValue: 150
