@@ -42,5 +42,8 @@ docker run -it --rm -p 8080:8080 cakmadam/autoscaling-app:0.2
 1- Enter GUI. Change JMX file's path variables. Close GUI.
 2- Run below on CLI:
 ```
-jmeter -n -t [jmx file] -l [results file] -e -o [Path to web report folder]
+jmeter -n -t [jmx file] -l [results file (csv)] -e -o [Path to web report folder]
 ```
+
+To construct HTML report from the CSV results:
+``` ./bin/jmeter -g [results file (csv)] -o [Path to web report folder] ```
