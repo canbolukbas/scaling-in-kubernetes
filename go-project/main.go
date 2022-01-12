@@ -32,8 +32,8 @@ func cpu(w http.ResponseWriter, req *http.Request) {
 func memory(w http.ResponseWriter, req *http.Request) {
 	opsProcessed.Inc()
 	go func() {
-		_ = make([]byte, 200000)
-		time.Sleep(500 * time.Millisecond)
+		_ = make([]byte, 2000000)
+		time.Sleep(1500 * time.Millisecond)
 	}()
 
 	fmt.Fprintf(w, "done\n")
