@@ -18,8 +18,11 @@ func cpu(w http.ResponseWriter, req *http.Request) {
 }
 
 func memory(w http.ResponseWriter, req *http.Request) {
-	_ = make([]byte, 50000)
-	time.Sleep(500 * time.Millisecond)
+	go func() {
+		_ = make([]byte, 200000)
+		time.Sleep(500 * time.Millisecond)
+	}()
+
 	fmt.Fprintf(w, "done\n")
 }
 
