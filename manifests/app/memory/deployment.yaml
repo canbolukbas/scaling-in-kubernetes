@@ -16,26 +16,26 @@ spec:
     spec:
       containers:
       - name: autoscaling-app
-        image: cakmadam/autoscaling-app:0.1
+        image: mtypey/kubernetes-app:0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
           name: http
         resources:
           limits:
-            cpu: 500m
+            memory: 300m
           requests:
-            cpu: 200m
+            memory: 50m
         livenessProbe:
           httpGet:
-            path: /app/health/
+            path: /health
             port: 8080
           initialDelaySeconds: 3
           periodSeconds: 5
           failureThreshold: 5
         readinessProbe:
           httpGet:
-            path: /app/health/
+            path: /health
             port: 8080
           initialDelaySeconds: 3
           periodSeconds: 5
