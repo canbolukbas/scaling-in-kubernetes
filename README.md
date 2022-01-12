@@ -46,4 +46,4 @@ jmeter -n -t [jmx file] -l [results file (csv)] -e -o [Path to web report folder
 ```
 
 To construct HTML report from the CSV results:
-``` ./bin/jmeter -g [results file (csv)] -o [Path to web report folder] ```
+``` jmeter -g [results file (csv)] -o [Path to web report folder] ```
