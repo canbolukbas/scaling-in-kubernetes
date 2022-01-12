@@ -23,6 +23,21 @@ When you create a GKE cluster do the following
 
 Then you can follow the scripts under `hpa`, `vpa` and `cluster-autoscaler` folders.
 
+## Dockerization
+1- To build docker image:
+```
+docker build . -t cakmadam/autoscaling-app:0.2
+```
+0.2 might be changed. It is for versioning.
+2- To push docker image:
+```
+docker push cakmadam/autoscaling-app:0.2
+```
+3- To run docker locally:
+```
+docker run -it --rm -p 8080:8080 cakmadam/autoscaling-app:0.2
+```
+
 ## Testing with JMeter
 1- Enter GUI. Change JMX file's path variables. Close GUI.
 2- Run below on CLI:
