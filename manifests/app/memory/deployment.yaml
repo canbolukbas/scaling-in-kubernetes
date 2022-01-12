@@ -23,9 +23,9 @@ spec:
           name: http
         resources:
           limits:
-            memory: 300m
+            memory: 300Mi
           requests:
-            memory: 50m
+            memory: 50Mi
         livenessProbe:
           httpGet:
             path: /health
